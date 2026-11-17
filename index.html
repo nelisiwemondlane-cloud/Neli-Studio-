@@ -1,19 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <metacharset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neli Studio</title>
-    <style>
-        body { font-family: sans-serif; text-align: center; padding: 50px; }
-        h1 { color: #333; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neli Studio</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    h1 { color: #333; }
+    .controls { margin-top: 20px; }
+  </style>
 </head>
 <body>
-    <h1>Neli Studio</h1>
-    <p>Music studio web application is coming soon.</p>
+  <h1>Neli Studio</h1>
+  <p>Music studio web application.</p>
+  <div class="controls">
+    <input type="file" id="audioUpload">
+    <br><br>
+    <audio id="audioPlayer" controls></audio>
+  </div>
+  <script>
+    const audioInput = document.getElementById('audioUpload');
+    const audioPlayer = document.getElementById('audioPlayer');
+    audioInput.addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const url = URL.createObjectURL(file);
+        audioPlayer.src = url;
+        audioPlayer.play();
+      }
+    });
+  </script>
 </body>
-    <input type="file">
-    <audio controls>
-    
 </html>
